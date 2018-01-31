@@ -2,6 +2,7 @@ snippet     cmd
 abbr        snippet commands {{{
     // assign avl ncm dijkstra geo2 kruskal graph uf lca BIT
     // matrix dinic next_combination topcoder lcm vi st gin
+    // cusum
 #}}}
 
 snippet     tmp
@@ -1018,7 +1019,8 @@ options     head
 abbr        graph input
     Graph ${1:g}(${2:n});
     for (int i = 0; i < $2; i++) {
-        int tmpx, tmpy${3: };
+        int2(tmpx, tmpy);
+        ${3: };
        ${4: }tmpx--; tmpy--;
         addEdge($1, tmpx, tmpy$3);
     }
@@ -1064,3 +1066,16 @@ abbr        segment tree
     };
 #}}}
 
+snippet     cusum
+#{{{
+options     head
+abbr        cusum
+    /*
+     * table は半開区間2次元累積和配列
+     */
+    int cusum(vvi &table, int minx, int miny, int maxx, int maxy)
+    {
+        return table[maxx][maxy] + table[minx][miny]
+            - table[maxx][miny] - table[minx][maxy];
+    }
+#}}}
