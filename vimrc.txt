@@ -1,0 +1,121 @@
+syntax on "色付け
+set number "行番号
+set smartindent "インデント
+set autoindent
+set expandtab "タブ文字の代わりに空白を使う
+set shiftwidth=4 "タブの深さ
+set tabstop=4
+set softtabstop=4
+set nocompatible
+filetype indent plugin on
+set hidden
+set wildmenu
+set showcmd
+set hlsearch
+set ignorecase
+set smartcase
+set backspace=indent,eol,start
+set nostartofline
+set ruler
+set laststatus=2
+set confirm
+set visualbell
+set t_vb=
+set mouse=a
+set ttymouse=xterm2
+set cmdheight=2
+set notimeout ttimeout ttimeoutlen=200
+" 折りたたみを有効にする
+set foldmethod=marker
+"nnoremap <C-L> :nohl<CR><C-L>
+"noremap <Left> <Nop>
+"noremap <Right> <Nop>
+"noremap <Up> <Nop>
+"noremap <Down> <Nop>
+"inoremap <Left> <Nop>
+"inoremap <Right> <Nop>
+"inoremap <Up> <Nop>
+"inoremap <Down> <Nop>
+"inoremap <silent> jj <ESC>
+"
+if &compatible
+  set nocompatible
+endif
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+
+call dein#begin(expand('~/.vim/dein'))
+
+" ==================== plugins ===============================
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
+" NeoBundle 'Shougo/vimproc')
+call dein#add('honza/vim-snippets')
+call dein#add('itchyny/lightline.vim')
+call dein#add('nathanaelkane/vim-indent-guides')
+call dein#add('ujihisa/neco-look')
+"call dein#add('Townk/vim-autoclose')
+" ============================================================
+call dein#end()
+
+filetype plugin indent on
+
+" ここからスニペット設定
+" Plugin key-mappings.  " <C-k>でsnippetの展開
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+let g:neosnippet#snippets_directory = '~/.vim/snippets/'
+
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+" ここまでスニペットのお話
+
+" 未インストールのプラグインをインストール
+if dein#check_install()
+    call dein#install()
+endif
+
+
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" Required:
+set runtimepath+=/home/tatsuya/.cache/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state('/home/tatsuya/.cache/dein')
+  call dein#begin('/home/tatsuya/.cache/dein')
+
+  " Let dein manage dein
+  " Required:
+  call dein#add('/home/tatsuya/.cache/dein/repos/github.com/Shougo/dein.vim')
+
+  " Add or remove your plugins here:
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+
+  " You can specify revision/branch/tag.
+  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+"End dein Scripts-------------------------
