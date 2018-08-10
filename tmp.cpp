@@ -12,12 +12,12 @@
     #define pb push_back
     #define eb emplace_back
     #define mp make_pair
-    #define i_i pair<int, int>
+    #define pii pair<int, int>
     #define vi vector<int>
     #define vvi vector<vi >
     #define vb vector<bool>
     #define vvb vector<vb >
-    #define vp vector< i_i >
+    #define vp vector< pii >
     #define all(a) (a).begin(), (a).end()
     #define Int(x) int x; cin >> x;
     #define int2(x, y) Int(x); Int(y);
