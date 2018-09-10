@@ -22,6 +22,7 @@
     #define Int(x) int x; cin >> x;
     #define int2(x, y) Int(x); Int(y);
     #define int3(x, y, z) Int(x); int2(y, z);
+    #define in(x, a, b) ((a) <= (x) && (x) < (b))
     #define fir first
     #define sec second
     #define ffir first.first

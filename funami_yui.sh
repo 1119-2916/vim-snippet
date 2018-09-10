@@ -9,7 +9,7 @@ echo "" >> cmd.txt
 mv cmd.txt cmd.cpp
 
 # make cpp.snip
-rm cpp.snip
+#rm cpp.snip
 for filename in $( ls . | grep .cpp$ ); do
     echo "snippet       ${filename%.cpp}" >> cpp.snip
     echo "#{{{" >> cpp.snip
