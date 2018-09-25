@@ -1,12 +1,12 @@
     /**
-     * 動的 CHT 単調性無しok 各操作 O(logN)
-     * **必ず厳密な探索範囲[minn, maxx]を与えること**
+     * 動的 CHT 単調性無しok 各操作平均 O(logN) 
+     * 木は偏る（真理）
+     * **必ず厳密な探索範囲 (minn, maxx) を与えること**
      * T = int 以外で未検証
      */
     template <typename T, const T id = numeric_limits<T>::min()>
     class CHT {
         using L = T;   // 返り値の型 (縦軸)
-        const T accuracy = 0;  // 精度 (横軸)
         struct Line {
             T a, b;
             Line (T a = 0, T b = 0) : a(a), b(b) {}
@@ -25,25 +25,25 @@
     
         // [lb, ub]
         Node* update(Node *p, T lb, T ub, Line& line) {
-            if (!p) return new Node(line);
+            if (!p) { return new Node(line); }
             if (p->line.get(lb) >= line.get(lb) && 
-                    p->line.get(ub) >= line.get(ub)) return p;
+                    p->line.get(ub) >= line.get(ub)) { return p; }
             if (p->line.get(lb) <= line.get(lb) && 
                     p->line.get(ub) <= line.get(ub)) {
                 p->line = line;
                 return p;
             }
             T mid = (lb + ub) / 2;
-            if (p->line.get(mid) < line.get(mid)) swap(p->line, line);
-            if (p->line.get(lb) <= line.get(lb))
+            if (p->line.get(mid) < line.get(mid)) { swap(p->line, line); }
+            if (p->line.get(lb) <= line.get(lb)) {
                 p->lch = update(p->lch, lb, mid, line);
-            else 
+            } else {
                 p->rch = update(p->rch, mid, ub, line);
+            }
             return p;
         }
         L query(Node *p, T lb, T ub, T t) {
             if (!p) { return id; }
-            if (ub - lb <= accuracy) return p->line.get(t);
             T mid = (lb + ub) / 2;
             if (t <= mid) {
                 return max(p->line.get(t), query(p->lch, lb, mid, t));
