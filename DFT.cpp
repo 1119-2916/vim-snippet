@@ -1,5 +1,5 @@
     template<class T >
-    struct DiscreteFourierTransform
+    struct DFT
     {
        using Complex = T;
         vector<Complex> dft(vector<Complex> a, int n, int sgn = 1)

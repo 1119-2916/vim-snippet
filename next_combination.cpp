@@ -1,3 +1,8 @@
+    /*
+     *  nCv.size()
+     *  v[i] = i
+     *  do - while (next_comb);
+     */
     bool next_combination(std::vector<int>& v, int n) {
         int k = v.size();
         int p = k - 1;
