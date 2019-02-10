@@ -44,13 +44,13 @@
         return ( m + x % m ) % m;
     }
     
-    int table(int n)
+    int table(int n, int p)
     {
         int sum = 1;
         fact[0] = 1;
         Rep(i, n+2) {
             sum *= i;
-            sum %= MOD;
+            sum %= p;
             fact[i] = sum;
         }
     }
