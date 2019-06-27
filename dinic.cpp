@@ -1,5 +1,6 @@
     /* 
-     * 必ずgraphも一緒にincludeすること
+     * 有効辺を貼る
+     * 辺の重みが最大流量になる
      */
     struct Dinic {
         int n, s, t;
