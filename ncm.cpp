@@ -1,4 +1,4 @@
-    int fact[1145140];
+    int fact[10145140];
     int pascal_table[100][100];
 
     /*
@@ -53,6 +53,7 @@
             sum %= p;
             fact[i] = sum;
         }
+        return 0;
     }
     
     int mod_fact(int n, int p, int &e)
@@ -70,7 +71,7 @@
      * nCr mod p
      * nHr = (n+r-1)Cr
      * 必ずtable()を呼んでから使う.
-     * n = 1001000くらいで
+     * n = 10001000くらいで
      */
     int mod_comb(int n, int k, int p) {
         if (n < 0 || k < 0 || n < k) return 0;
